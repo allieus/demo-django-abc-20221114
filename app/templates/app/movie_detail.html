@@ -1,0 +1,56 @@
+
+<h2>{{ movie.name }}</h2>
+
+<p>blah blah</p>
+<p>blah blah</p>
+<p>blah blah</p>
+<p>blah blah</p><p>blah blah</p>
+<p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p>
+
+<p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p>
+
+
+
+<p>blah blah</p>
+<p>blah blah</p>
+<p>blah blah</p>
+<p>blah blah</p><p>blah blah</p>
+<p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p>
+
+<p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p>
+
+
+<p>blah blah</p>
+<p>blah blah</p>
+<p>blah blah</p>
+<p>blah blah</p><p>blah blah</p>
+<p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p>
+
+<p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p><p>blah blah</p>
+
+
+{# jQuery, Vanilla JS, React, Vue.js, Angular, 스벨트 #}
+
+
+{# <a href="/{{ movie.pk }}/comments/new/">댓글 쓰기</a> #}
+
+<form action="/{{ movie.pk }}/comments/new/" method="post" novalidate>
+    {% csrf_token %}
+    <table>
+        {{ comment_form.as_table }}
+    </table>
+    <input type="submit" value="댓글 저장" />
+</form>
+
+<ul>
+{% for comment in comment_list %}
+    <li>
+        {{ comment.message }}
+        by {{ comment.author }}
+        {# Ugly: Use URL Reverse #}
+        <a href="/{{ movie.pk }}/comments/{{ comment.pk }}/edit/">수정</a>
+        삭제
+    </li>
+
+{% endfor %}
+</ul>

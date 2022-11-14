@@ -1,0 +1,29 @@
+<style>
+    .my_hidden {
+        display: none;
+    }
+</style>
+
+<ul>
+{% for movie in movie_list %}
+    <li>
+        <a href="/{{ movie.pk }}/">
+            {{ movie.name }}
+        </a>
+        <button onclick="
+            const description_id = 'movie_description_{{ movie.id }}';
+            document.querySelector('#' + description_id).classList.toggle('my_hidden');
+        ">
+            세부설명 보기
+        </button>
+        <div id="movie_description_{{ movie.id }}" class="my_hidden">
+            <p>영화#{{ movie.id }}에 대한 설명</p>
+            <p>영화#{{ movie.id }}에 대한 설명</p>
+            <p>영화#{{ movie.id }}에 대한 설명</p>
+            <p>영화#{{ movie.id }}에 대한 설명</p>
+            <p>영화#{{ movie.id }}에 대한 설명</p>
+            <p>영화#{{ movie.id }}에 대한 설명</p>
+        </div>
+    </li>
+{% endfor %}
+</ul>
